@@ -1,8 +1,7 @@
 body{
-  background: #00C9FF; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #00C9FF , #92FE9D); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #00C9FF , #92FE9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: url("https://images.unsplash.com/photo-1464621922360-27f3bf0eca75?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1b0aa3802706c803f1c2f261d761f584") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
 }
 
 @media screen and (max-width: 568px) {
@@ -15,7 +14,7 @@ body{
   }
 }
 .well {
-  background: white;
+  background: rgba(255,255,255, .1);
   margin:20px 25%;
   width: 50%;
   text-align: center;
@@ -31,4 +30,9 @@ h3 {
   margin-top: 100px;
   margin-bottom: 0;
 }
+
+.author {
+  color: inherit;
+}
+
 

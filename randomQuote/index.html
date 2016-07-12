@@ -14,8 +14,6 @@
 
 
 	<title>Random Quotes </title>
-</head>
-
 
 <body>
 	<h3> Random Quote Generator</h3>
@@ -24,15 +22,21 @@
 		<blockquote>
 		</blockquote>
 		<div>
-			<button class = "btn btn-primary newQuote" onclick="getQuote()">New Quote</button>
+			<button class = "btn btn-primary" id = "newQuote">New Quote</button>
 
 			<a class="twitter-share-button"
 			href="https://twitter.com/intent/tweet"
 			data-size="large" target = "_blank">
 			<button type = "button" class = "btn btn-info" > <i class="fa fa-twitter" aria-hidden="true"></i>  Tweet Quote </button>
-
-			<div>
 			</a>
-		</div>
-	</body>
-	</html>
+		 </div>	
+
+		 <select id="quoteType">
+		 	<option value = "famous">Famous People</option>
+		 	<option value= "movies">Movies</option>
+		 </select>
+		 
+	 </div>
+</body>
+
+</html>

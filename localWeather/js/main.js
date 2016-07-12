@@ -1,5 +1,5 @@
 geo_api = "http://ip-api.com/json";
-weather_url = "//api.openweathermap.org/data/2.5/weather?q=";
+weather_url = "http://api.openweathermap.org/data/2.5/weather?q=";
 APPID = "&APPID=39daf205ed933345fe041b3dc30e846d&units=imperial";
 var country;
 var city;
