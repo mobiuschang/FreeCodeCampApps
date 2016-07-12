@@ -1,49 +1,57 @@
 geo_api = "http://ip-api.com/json";
-weather_url = "http://api.openweathermap.org/data/2.5/weather?q=";
-APPID = "&APPID=39daf205ed933345fe041b3dc30e846d&units=imperial";
+weather_url = "https://api.forecast.io/forecast/1e518e55aa95c11adb0367ebba58e2dc/";
+// APPID = "&APPID=39daf205ed933345fe041b3dc30e846d&units=imperial";
 var country;
 var city;
+var latitude;
+var longitude;
 var tempC = 0;
 var tempF = 0;
 var getCurrentWeather = function(weatherURL) {
   $.ajax({
     url: weatherURL,
     type: 'GET',
+    dataType: "jsonp",
     success: function(json) {
       console.log(JSON.stringify(json));
-      weather = json.weather[0].main;
-      id = json.weather[0].id;
-      humidity = json.main.humidity;
-      tempF = json.main.temp;
+      weather = json.currently.icon;
+      
+      humidity = json.currently.humidity;
+      tempF = json.currently.temperature;
       tempC = (tempF - 32 ) * (5/9);
       tempC = tempC.toFixed(2);
       
       switch(weather) {
-        case "Thunderstorm":
-          $("body").addClass("bgThunderstorms");
+        case "clear-day":
+          $("body").addClass("bgClearDay");
           break;
-        case "Drizzle":
-          $("body").addClass("bgDrizzle");
-          break;
-        case "Rain":
+        case "rain":
           $("body").addClass("bgRain");
           break;
-        case "Snow":
+        case "snow":
           $("body").addClass("bgSnow");
           break;
-        case "Atomosphere":
-          $("body").addClass("bgAdditional");
+        case "sleet":
+          $("body").addClass("bgSleet");
           break;
-        case "Clouds":
-          $("body").addClass("bgClouds");
+        case "wind":
+          $("body").addClass("bgWind");
           break;
-        case "Clear":
-          $("body").addClass("bgClear");
+        case "fog":
+          $("body").addClass("bgFog");
           break;
-        case "Extreme":
-          $("body").addClass("bgExtreme");
+        case "cloudy":
+          $("body").addClass("bgCloudy");
+          break;
+        case "partly-cloudy-day":
+          $("body").addClass("bgPartlyCloudyDay");
+          break;
+        case "partly-cloudy-night":
+          $("body").addClass("bgPartlyCloudyNight");
           break;
         default:
+          $("body").addClass("bgClearDay");
+          break;
           
       }
       
@@ -66,7 +74,10 @@ var getWeatherInfo = function(geoLocUrl, weatherURL) {
     success: function(json) {
       city = json.city;
       country = json.country;
-      weatherApiURL = weatherURL + city + APPID;
+      latitude = json.lat;
+      longitude = json.lon;
+      weatherApiURL = weatherURL + latitude + "," + longitude;
+      // weatherApiURL = weatherURL + city + APPID;
       getCurrentWeather(weatherApiURL);
     },
     error: function(err) {
@@ -77,30 +88,29 @@ var getWeatherInfo = function(geoLocUrl, weatherURL) {
 
 getWeatherInfo(geo_api, weather_url);
 
-$("#tempUnitC").click(function(){
-  $(this).removeClass("disabled").addClass("active");
-  $("#tempUnitF").removeClass("active").addClass("disabled");
-  $("#tempF").hide();
-  $("#tempC").show();
-  $("body").addClass("bgClouds");
-
-})
-
-$("#tempUnitF").click(function(){
-  $(this).removeClass("disabled").addClass("active");
-  $("#tempUnitC").removeClass("active").addClass("disabled");
-  $("#tempC").hide();
-  $("#tempF").show();
-  
-
-})
-
-$("#tempUnitC #tempUnitF").hover(function(){
-  $(this).css("cursor", "pointer");
-})
 
 $(document).ready(function(){
   $("#tempC").hide();
-  $("body").addClass("bgHeat");
+  
+  $("#tempUnitC").click(function(){
+    $(this).removeClass("disabled").addClass("active");
+    $("#tempUnitF").removeClass("active").addClass("disabled");
+    $("#tempF").hide();
+    $("#tempC").show();
+    $("body").addClass("bgClouds");
+
+  })
+
+  $("#tempUnitF").click(function(){
+    $(this).removeClass("disabled").addClass("active");
+    $("#tempUnitC").removeClass("active").addClass("disabled");
+    $("#tempC").hide();
+    $("#tempF").show();
+    
+  })
+
+  $("#tempUnitC #tempUnitF").hover(function(){
+    $(this).css("cursor", "pointer");
+  })
 })
 
