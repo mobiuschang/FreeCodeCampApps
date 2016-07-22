@@ -1,0 +1,56 @@
+#allChannels, #onChannels {
+	border-right-style: solid;
+	border-width: 1px;
+}
+
+.center-block {
+	width: 550px;
+	margin: 0 auto;
+	
+}
+
+.channelsList {
+	float: left;
+	margin-top: 5px;
+	
+}
+
+div {
+	margin-bottom: 10px;
+}
+
+.channelMenu {
+	background-color: #e15241;
+	color: white;
+	cursor: pointer;
+	font: arial;
+	float: left;
+	height: 35px;
+	line-height: 35px;
+	margin-bottom: 0;
+	text-align: center;
+	width: 33%;
+
+}
+
+.channelMenu:hover {
+	transform: scale(1.1);
+	border-style: solid;
+	border-width: 1px;
+}
+
+#game {
+	float: right;
+	margin-right: 10px;
+	margin-top: 12px;
+}
+
+.heading {
+	text-align: center;
+}
+
+.img-circle {
+	width: 10%;
+	height: auto;
+	margin-right: 10px;
+}
